@@ -8,27 +8,23 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Bins {
-    HashMap<Double, Double> bins = new HashMap<>();
+    HashMap<Integer, Integer> bins = new HashMap<>();
    // List<Key Value> bins = new ArrayList<Key Value>();
 
-    public Bins(int min, double number, int max) {
-        for (int i = min; i <= max ; i++) {
-           if (bins.get(i) == null){
-               bins.put((double) i, number);
-           }
-
-            print();
+    public Bins(int min, int max){
+        for (int i = min; i <= max; i++) {
+            bins.put(i, 0);
         }
     }
 
-//    public void addToBins(Integer number){
-//        bins.add(number);
-//        print();
-//    }
+    public int getBin(int binToGet){
+       return bins.get(binToGet);
+    }
+    public void incrementBin(int binToIncrement){
+        int valueToIncrement = bins.get(binToIncrement) ;
+        bins.put(binToIncrement, valueToIncrement+1);
+    }
 
-//    public int getBin(){
-//
-//    }
 
     public void print(){
         System.out.println(bins.toString());

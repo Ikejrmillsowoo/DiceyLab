@@ -1,24 +1,33 @@
-
-
+import java.util.HashMap;
+import java.util.Random;
 
 public class Dice {
 
+    private final int numberOfDice;
+    private final Bins bins;
+    public Dice(int numberOfDice){
+        this.numberOfDice = numberOfDice;
+        this.bins = new Bins(numberOfDice, numberOfDice*6);
+    }
 
-    public static void tossAndSum(Integer num){
-        double sum = 0.0;
-        for (int i = 1; i <= num; i++) {
-            double singleDiceToss = Math.floor(Math.random() * 6);
+    public int tossAndSum(){
+        int sum = 0;
+        for (int i = 1; i <= numberOfDice; i++) {
+            Random random = new Random();
+            int singleDiceToss = random.nextInt(6)+1;
             System.out.println(singleDiceToss);
             sum += singleDiceToss;
         }
+        bins.incrementBin(sum);
         System.out.println(sum);
-       Bins bins = new Bins(2,num,12);
-       // bins.addToBins((int) sum);
-   // return sum;
+        return sum;
     }
 
+
+
     public static void main(String[] args) {
-        tossAndSum(2);
+      Dice dice = new Dice(5);
+      dice.tossAndSum();
     }
 
 
